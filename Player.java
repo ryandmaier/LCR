@@ -3,10 +3,14 @@ public class Player
 {
     String name;
     int coins;
-    public Player(String name, int startCoins)
+    int position;
+    public Player() {}
+    
+    public Player(String name, int startCoins, int pos)
     {
         this.name = name;
         coins = startCoins;
+        position = pos;
     }
     
     public String getName()
@@ -17,6 +21,11 @@ public class Player
     public int getCoins()
     {
         return coins;
+    }
+    
+    public int getPos()
+    {
+        return position;
     }
     
     public void setName(String n)
@@ -32,6 +41,11 @@ public class Player
     public void addCoins(int c)
     {
         coins+=c;
+    }
+    
+    public void setPos(int pos)
+    {
+        position = pos;
     }
 
 }
