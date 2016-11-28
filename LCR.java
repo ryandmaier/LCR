@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
 public class LCR
 {
     Random rand;
@@ -12,7 +13,7 @@ public class LCR
         rand = new Random();
         read = new Scanner(System.in);
         getPlayers();
-        playGame();
+        //playGame();
     }
 
     public void playGame()
@@ -29,18 +30,22 @@ public class LCR
         int winner = whoWon().getPos();
         players[winner].addCoins(centerCoins);
         centerCoins = 0;
-        printStuff();
+        //printStuff();
 
     }
 
-    public void printStuff()
+    public ArrayList<Integer> printStuff()
     {
-        System.out.println('\u000C');
-        System.out.println("Center: " + centerCoins);
+        ArrayList<Integer> printReturn = new ArrayList<Integer>();
+        //System.out.println('\u000C');
+        //System.out.println("Center: " + centerCoins);
+        printReturn.add(centerCoins);
         for(Player p : players)
         {
-            System.out.println("Player " + p.getName() + ": " + p.getCoins());
+            printReturn.add(p.getCoins());
+            //System.out.println("Player " + p.getName() + ": " + p.getCoins());
         }
+        return printReturn;
     }
 
     public Player whoWon()
@@ -106,10 +111,10 @@ public class LCR
             }
         }
 
-        printStuff();
+        //printStuff();
         for(String d : dice)
         {
-            System.out.println("Roll: " + d);
+            //System.out.println("Roll: " + d);
         }
 
         return dice;
@@ -129,16 +134,19 @@ public class LCR
 
     public void getPlayers()
     {
-        System.out.println("How many coins will each player get?");
-        totalCoins = read.nextInt();
-        System.out.println("How many players are playing?");
-        players = new Player[read.nextInt()];
-        read.nextLine();//idk why i need this, but it makes it work
+        //System.out.println("How many coins will each player get?");
+        //totalCoins = read.nextInt();
+        totalCoins=5;
+        //System.out.println("How many players are playing?");
+        //players = new Player[read.nextInt()];
+        players=new Player[4];
+        //read.nextLine();//idk why i need this, but it makes it work
 
         for(int i = 0; i<players.length; i++)
         {
-            System.out.println("What is the name of player " + (i+1));
-            String n = read.nextLine();
+            //System.out.println("What is the name of player " + (i+1));
+            String n = String.valueOf(i);
+            //read.nextLine();
             players[i] = new Player(n, totalCoins, i);
         }
     }
